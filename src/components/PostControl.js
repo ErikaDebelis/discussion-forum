@@ -1,7 +1,8 @@
 import React from "react";
 import NewsFeed from "./NewsFeed"; 
-import NewPostFrom from "./NewPostForm";
+import NewPostForm from "./NewPostForm";
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class PostControl extends React.Component {
 
@@ -81,7 +82,17 @@ class PostControl extends React.Component {
   }
 }
 
-PostControl = connect()(PostControl);
+PostControl.propTypes = {
+  masterNewsFeed: PropTypes.object
+};
+
+const mapStateToProps = state => {
+  return {
+    masterNewsFeed: state
+  }
+}
+
+PostControl = connect(mapStateToProps)(PostControl);
 
 export default PostControl;
 
