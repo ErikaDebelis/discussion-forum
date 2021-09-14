@@ -4,11 +4,15 @@ import NewPostFrom from "./NewPostForm";
 import { connect } from 'react-redux';
 
 class PostControl extends React.Component {
+
   constructor(props) {
     super(props);
+    console.log(props);
     this.state = {
-      formVisibleOnPage: false
-    }
+      formVisibleOnPage: false,
+      selectedPost: null,
+      editing: false
+    };
   }
 
   handleClick = () =>{
@@ -17,6 +21,19 @@ class PostControl extends React.Component {
     }));
   }
 
+  handleAddingNewPostToNewsFeed = (newPost) => {
+    const { dispatch } = this.props;
+    const { id, name, location, content } = newPost;
+    const action = {
+      type: 'ADD_POST',
+      id: id,
+      name: name,
+      location: location,
+      content: content,
+    }
+    dispatch(action);
+    this.setState({formVisibleOnPage: false});
+  }
 
   render(){
   let currentlyVisibleState = null;
