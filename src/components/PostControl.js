@@ -35,6 +35,33 @@ class PostControl extends React.Component {
     this.setState({formVisibleOnPage: false});
   }
 
+  handleEditingNewPostInNewsFeed = (postToEdit) => {
+    const { dispatch } = this.props;
+    const { id, name, location, content } = postToEdit;
+    const action = {
+      type: 'ADD_POST',
+      id: id,
+      name: name,
+      location: location,
+      content: content,
+    }
+    dispatch(action);
+    this.setState({
+      editing: false,
+      selectedPost: null
+    });
+  }
+
+  handleDeletingPost = (id) => {
+    const { dispatch } = this.props;
+    const action = {
+      type: 'DELETE_POST',
+      id: id
+    }
+    dispatch(action);
+    this.setState({selectedPost: null});
+  }
+
   render(){
   let currentlyVisibleState = null;
   let buttonText = null;
