@@ -1,8 +1,10 @@
-import React from "react";
-import NewsFeed from "./NewsFeed"; 
-import NewPostForm from "./NewPostForm";
+import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+
+import NewsFeed from './NewsFeed'; 
+import NewPostForm from './NewPostForm';
+import PostDetail from './PostDetail'
 
 class PostControl extends React.Component {
 
