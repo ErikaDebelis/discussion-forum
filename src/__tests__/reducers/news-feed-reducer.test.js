@@ -14,7 +14,8 @@ describe('newsFeedReducer', () => {
   });
 
   test('Should successfully add a new post to the newsFeed', () => {
-    const {
+    const {name, location, content, id } = postData;
+    action = {
       type: 'ADD_POST',
       name: name,
       location: location,
