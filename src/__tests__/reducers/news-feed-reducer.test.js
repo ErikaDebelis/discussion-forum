@@ -46,9 +46,9 @@ describe('newsFeedReducer', () => {
     });
   });
 
-  test('Should successfully delete a ticket', () => {
+  test('Should successfully delete a post', () => {
     action = {
-      type: 'DELETE_TICKET',
+      type: 'DELETE_POST',
       id: 1
     };
 
