@@ -3,7 +3,7 @@ import ReusableForm from "./ReusableForm";
 
 function NewPostForm(){
   return(
-
+    <React.Fragment
   );
 }
 

@@ -1,6 +1,7 @@
 import React from "react";
 import NewsFeed from "./NewsFeed"; 
 import NewPostFrom from "./NewPostForm";
+import { connect } from 'react-redux';
 
 class PostControl extends React.Component {
   constructor(props) {
@@ -35,6 +36,8 @@ class PostControl extends React.Component {
     )
   }
 }
+
+PostControl = connect()(PostControl);
 
 export default PostControl;
 
