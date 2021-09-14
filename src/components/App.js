@@ -7,6 +7,7 @@ function App() {
       <header className="App-header">
         <p>FORUM</p>
       </header>
+      <PostControl />
     </div>
   );
 }
