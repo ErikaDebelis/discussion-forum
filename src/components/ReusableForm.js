@@ -18,7 +18,7 @@ function ReusableForm(props) {
           placeholder='what"s on your mind...' />
         <button type='submit'>{props.buttonText}</button>
       </form>
-    </React.Fragment>
+    </React.Fragment> 
   );
 }
 

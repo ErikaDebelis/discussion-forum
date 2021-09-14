@@ -16,7 +16,8 @@ Post.propTypes ={
   names: PropTypes.string.isRequired,
   location: PropTypes.string,
   content: PropTypes.string.isRequired,
-  id: PropTypes.string
+  id: PropTypes.string,
+  whenPostClicked: PropTypes.func
 }
 
 export default Post;
