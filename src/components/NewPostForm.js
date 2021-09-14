@@ -3,6 +3,9 @@ import ReusableForm from "./ReusableForm";
 import React from "react";
 
 function NewPostForm(){
+  function handleNewPostSubmission(event){
+    event.preventDefault();
+  }
   return(
     <React.Fragment>
       <form onSubmit={handleNewPostSubmission}>

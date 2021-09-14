@@ -17,9 +17,22 @@ class PostControl extends React.Component {
   }
 
   handleClick = () =>{
-    this.setState(prevState => ({
-      formVisibleOnPage: !prevState.formVisibleOnPage
-    }));
+    if (this.state.selectedPost != null) {
+      this.setState({
+        formVisibleOnPage: false,
+        selectedPost: null,
+        editing: false
+      });
+    } else {
+      this.setState(prevState => ({
+        formVisibleOnPage: !prevState.formVisibleOnPage,
+      }));
+    }
+  }
+
+  handleChangingSelectedPost = (id) => {
+    const selectedPost = this.props.masterNewsFeed[id];
+    this.setState({selectedPost: selectedPost});
   }
 
   handleAddingNewPostToNewsFeed = (newPost) => {
@@ -34,6 +47,10 @@ class PostControl extends React.Component {
     }
     dispatch(action);
     this.setState({formVisibleOnPage: false});
+  }
+
+  handleEditClick = () => {
+    this.setState({editing: true});
   }
 
   handleEditingNewPostInNewsFeed = (postToEdit) => {
@@ -64,22 +81,46 @@ class PostControl extends React.Component {
   }
 
   render(){
-  let currentlyVisibleState = null;
-  let buttonText = null;
-  if (this.state.formVisibleOnPage){
-    currentlyVisibleState = <NewPostForm />
-    buttonText = "Return to News Feed"
-  }else {
-    currentlyVisibleState = <NewsFeed /> 
-    buttonText = "Add Post"
+    let currentlyVisibleState = null;
+    let buttonText = null;
+
+    if (this.state.editing ) {
+      currentlyVisibleState =
+      <EditPostForm
+        post = {this.state.selectedPost}
+        onEditPost = {this.handleEditingPostInNewsFeed} />
+      buttonText = "Return to News Feed";
+
+    } else if (this.state.selectedPost != null) {
+      currentlyVisibleState =
+      <PostDetail
+        post = {this.state.selectedPost}
+        onClickingDelete = {this.handleDeletingPost}
+        onClickingEdit = {this.handleEditClick} />
+      buttonText = "Return to News Feed";
+
+    } else if (this.state.formVisibleOnPage) {
+      currentlyVisibleState =
+      <NewPostForm
+        onNewPostCreation = {this.handleAddingNewPostToNewsFeed}  />;
+      buttonText = "Return to News Feed";
+
+    } else {
+      currentlyVisibleState =
+      <NewsFeed
+        newsFeed = {this.props.masterNewsFeed}
+        onPostSelection = {this.handleChangingSelectedPost} />;
+      buttonText = "Add Post";
+    }
+
+    return (
+      <React.Fragment>
+        {currentlyVisibleState}
+        <button onClick={this.handleClick}>{buttonText}</button>
+      </React.Fragment>
+    );
   }
-  return(
-    <React.Fragment>
-      {currentlyVisibleState}
-      <button onClick={this.handleClick}>{buttonText}</button>
-    </React.Fragment>
-    )
-  }
+
 }
 
 PostControl.propTypes = {

@@ -11,11 +11,11 @@ function ReusableForm(props) {
           placeholder='Pair Name' />
         <input
           type='text'
-          name='location'
-          placeholder='Location' />
+          name='forum'
+          placeholder='Discussion' />
         <textarea
-          name='issue'
-          placeholder='Describe your issue.' />
+          name='post'
+          placeholder='what"s on your mind...' />
         <button type='submit'>{props.buttonText}</button>
       </form>
     </React.Fragment>
