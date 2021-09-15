@@ -1,0 +1,17 @@
+.footer {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  text-align: left;
+}
+
+.App {
+  text-align: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.formfloat {
+  text-align: left;
+  font-weight: bold;
+}

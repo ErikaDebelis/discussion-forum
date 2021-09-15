@@ -5,6 +5,7 @@ import EditPostForm from './EditPostForm';
 import NewsFeed from './NewsFeed';
 import NewPostForm from './NewPostForm';
 import PostDetail from './PostDetail';
+import Button from "react-bootstrap/Button";
 
 class PostControl extends React.Component {
 
@@ -12,7 +13,7 @@ class PostControl extends React.Component {
     super(props);
     console.log(props);
     this.state = {
-      // formVisibleOnPage: false,
+      formVisibleOnPage: false,
       selectedPost: null,
       editing: false
     };
@@ -21,19 +22,19 @@ class PostControl extends React.Component {
   handleClick = () =>{
     if (this.state.selectedPost != null) {
       this.setState({
-        // formVisibleOnPage: false,
+        formVisibleOnPage: false,
         selectedPost: null,
         editing: false
       });
     } else {
-      const { dispatch } = this.props;
-      const action = {
-      type: 'TOGGLE_FORM'
-      }
-      dispatch(action)
-      // this.setState(prevState => ({
-      //   formVisibleOnPage: !prevState.formVisibleOnPage,
-      // }));
+      // const { dispatch } = this.props;
+      // const action = {
+      // type: 'TOGGLE_FORM'
+      // }
+      // dispatch(action)
+      this.setState(prevState => ({
+        formVisibleOnPage: !prevState.formVisibleOnPage,
+      }));
     }
   }
 
@@ -53,11 +54,27 @@ class PostControl extends React.Component {
       content: content
     }
     dispatch(action);
+    const action1 = {
+      type: 'ADD_POST',
+      id: 10,
+      name: "Araceli",
+      location: "Texas",
+      content: "Texas loves their gun"
+    }
+    dispatch(action1);
     const action2 = {
-      type: 'TOGGLE_FORM'
+      type: 'ADD_POST',
+      id: 11,
+      name: "Erika",
+      location: "Oregon",
+      content: "Oh no, now that I have to think about it. I don't know!"
     }
     dispatch(action2);
-    // this.setState({formVisibleOnPage: false});
+    // const action2 = {
+    //   type: 'TOGGLE_FORM'
+    // }
+    // dispatch(action2);
+    this.setState({formVisibleOnPage: false})
   }
 
   handleEditClick = () => {
@@ -127,7 +144,7 @@ class PostControl extends React.Component {
     return (
       <React.Fragment>
         {currentlyVisibleState}
-        <button onClick={this.handleClick}>{buttonText}</button>
+        <Button variant="outline-primary" size="lg" onClick={this.handleClick}>{buttonText}</Button>
       </React.Fragment>
     );
   }
@@ -141,7 +158,7 @@ PostControl.propTypes = {
 const mapStateToProps = state => {
   return {
     masterNewsFeed: state,
-    formVisibleOnPage: state.formVisibleOnPage
+    // formVisibleOnPage: state.formVisibleOnPage
   }
 }
 
@@ -149,7 +166,7 @@ PostControl = connect(mapStateToProps)(PostControl);
 
 PostControl.propTypes ={
   masterNewsFeed: PropTypes.object,
-  formVisibleOnPage: PropTypes.bool
+  // formVisibleOnPage: PropTypes.bool
 }
 
 export default PostControl;

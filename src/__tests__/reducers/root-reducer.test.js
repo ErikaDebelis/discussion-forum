@@ -7,12 +7,12 @@ let store = createStore(rootReducer);
 
 describe("rootReducer", () => {
 
-  test('Should return default state if no action type is recognized', () => {
-    expect(rootReducer({}, { type: null })).toEqual({
-      masterNewsFeed: {},
-      formVisibleOnPage: false
-    });
-  });
+  // test('Should return default state if no action type is recognized', () => {
+  //   expect(rootReducer({}, { type: null })).toEqual({
+  //     masterNewsFeed: {},
+  //     formVisibleOnPage: false
+  //   });
+  // });
 
   test('Check that initial state of NewsFeedReducer matches root reducer', () => {
     expect(store.getState().masterNewsFeed).toEqual(NewsFeedReducer(undefined, { type: null }));

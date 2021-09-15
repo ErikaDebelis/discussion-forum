@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 function NewPostForm(props){
   function handleNewPostSubmission(event){
     event.preventDefault();
+    console.log(event.target.name.value,)
     props.onNewPostCreation({
       name: event.target.name.value,
       location: event.target.location.value,
