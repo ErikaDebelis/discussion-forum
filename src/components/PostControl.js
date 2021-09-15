@@ -12,7 +12,7 @@ class PostControl extends React.Component {
     super(props);
     console.log(props);
     this.state = {
-      formVisibleOnPage: false,
+      // formVisibleOnPage: false,
       selectedPost: null,
       editing: false
     };
@@ -21,14 +21,19 @@ class PostControl extends React.Component {
   handleClick = () =>{
     if (this.state.selectedPost != null) {
       this.setState({
-        formVisibleOnPage: false,
+        // formVisibleOnPage: false,
         selectedPost: null,
         editing: false
       });
     } else {
-      this.setState(prevState => ({
-        formVisibleOnPage: !prevState.formVisibleOnPage,
-      }));
+      const { dispatch } = this.props;
+      const action = {
+      type: 'TOGGLE_FORM'
+      }
+      dispatch(action)
+      // this.setState(prevState => ({
+      //   formVisibleOnPage: !prevState.formVisibleOnPage,
+      // }));
     }
   }
 
@@ -48,7 +53,11 @@ class PostControl extends React.Component {
       content: content
     }
     dispatch(action);
-    this.setState({formVisibleOnPage: false});
+    const action2 = {
+      type: 'TOGGLE_FORM'
+    }
+    dispatch(action2);
+    // this.setState({formVisibleOnPage: false});
   }
 
   handleEditClick = () => {
@@ -131,11 +140,17 @@ PostControl.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    masterNewsFeed: state
+    masterNewsFeed: state,
+    formVisibleOnPage: state.formVisibleOnPage
   }
 }
 
 PostControl = connect(mapStateToProps)(PostControl);
+
+PostControl.propTypes ={
+  masterNewsFeed: PropTypes.object,
+  formVisibleOnPage: PropTypes.bool
+}
 
 export default PostControl;
 

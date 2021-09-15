@@ -1,8 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import DOMPurify from 'dompurify';
 import Avatar from 'react-avatar'
+import ReactHtmlParser from 'react-html-parser'
+
+import styles from './Post.css'
 
 function Post({name, content, location}){
+  const clean = DOMPurify.sanitize(content)
   return(
     <div className="panel panel-default p-3">
       <div className="panel-body">
@@ -17,7 +22,7 @@ function Post({name, content, location}){
           </div>
             <div className="col-7">
               <p className={`mb-1 ${styles.name}`}>{name}</p>
-              <div className={styles.content}>{ReactHtmlParser(clean)}</div>
+              <div className={styles.text}>{ReactHtmlParser(clean)}</div>
             </div>
         </div>
       </div>
