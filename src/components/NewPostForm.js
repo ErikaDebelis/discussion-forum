@@ -2,6 +2,7 @@ import {v4} from "uuid";
 import ReusableForm from "./ReusableForm";
 import React from "react";
 import PropTypes from "prop-types";
+import Post from "./Post";
 
 function NewPostForm(props){
   function handleNewPostSubmission(event){
@@ -19,6 +20,15 @@ function NewPostForm(props){
       <ReusableForm
       formSubmissionHandler={handleNewPostSubmission}
       buttonText="Add" />
+      {Object.values(props.newsFeed).map((post) =>
+        <Post
+          // whenPostClicked = {props.onPostSelection}
+          name={post.name}
+          location={post.location}
+          content={post.content}
+          id={post.id}
+          key={post.id} />
+        )}
     </React.Fragment>
   );
 }

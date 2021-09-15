@@ -54,22 +54,6 @@ class PostControl extends React.Component {
       content: content
     }
     dispatch(action);
-    const action1 = {
-      type: 'ADD_POST',
-      id: 10,
-      name: "Araceli",
-      location: "Texas",
-      content: "Texas loves their gun"
-    }
-    dispatch(action1);
-    const action2 = {
-      type: 'ADD_POST',
-      id: 11,
-      name: "Erika",
-      location: "Oregon",
-      content: "Oh no, now that I have to think about it. I don't know!"
-    }
-    dispatch(action2);
     // const action2 = {
     //   type: 'TOGGLE_FORM'
     // }
@@ -130,7 +114,8 @@ class PostControl extends React.Component {
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState =
       <NewPostForm
-        onNewPostCreation = {this.handleAddingNewPostToNewsFeed}  />;
+        onNewPostCreation = {this.handleAddingNewPostToNewsFeed}  
+        newsFeed = {this.props.masterNewsFeed}/>;
       buttonText = "Return to News Feed";
 
     } else {

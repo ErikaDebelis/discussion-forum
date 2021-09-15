@@ -8,7 +8,8 @@ export default (state = {
     content: 'I am THE bootstrap lady',
     id: 2 },
     3: {name: 'Araceli',
-    location: 'Texas loves their guns',
+    location: 'Texas',
+    content: 'Texas love their guns',
     id: 3 },
 }, action) => {
   const { name, location, content, id } = action;

@@ -27,7 +27,7 @@ function ReusableForm(props) {
               </Form.Group>
             </div>
             <div class="d-grid gap-2 col-6 mx-auto">
-              <Button variant="secondary" type='submit'>{props.buttonText}</Button>
+              <Button variant="secondary" type='submit' padding='10' >{props.buttonText}</Button>
             </div>
           </Form>
         </Card.Body>
