@@ -40,19 +40,12 @@ class PostControl extends React.Component {
   handleAddingNewPostToNewsFeed = (newPost) => {
     const { dispatch } = this.props;
     const { id, name, location, content } = newPost;
-    let action = {
+    const action = {
       type: 'ADD_POST',
       id: id,
       name: name,
       location: location,
       content: content
-    }
-    let action = {
-      type: 'ADD_POST',
-      id: 1,
-      name: "test_name",
-      location: "test_location",
-      content: "test_content"
     }
     dispatch(action);
     this.setState({formVisibleOnPage: false});
