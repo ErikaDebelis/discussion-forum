@@ -114,8 +114,7 @@ class PostControl extends React.Component {
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState =
       <NewPostForm
-        onNewPostCreation = {this.handleAddingNewPostToNewsFeed}  
-        newsFeed = {this.props.masterNewsFeed}/>;
+        onNewPostCreation = {this.handleAddingNewPostToNewsFeed}/>;
       buttonText = "Return to News Feed";
 
     } else {
