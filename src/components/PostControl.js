@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
-import NewsFeed from './NewsFeed'; 
+import EditPostForm from './EditPostForm';
+import NewsFeed from './NewsFeed';
 import NewPostForm from './NewPostForm';
-import PostDetail from './PostDetail'
+import PostDetail from './PostDetail';
 
 class PostControl extends React.Component {
 
@@ -40,12 +40,19 @@ class PostControl extends React.Component {
   handleAddingNewPostToNewsFeed = (newPost) => {
     const { dispatch } = this.props;
     const { id, name, location, content } = newPost;
-    const action = {
+    let action = {
       type: 'ADD_POST',
       id: id,
       name: name,
       location: location,
-      content: content,
+      content: content
+    }
+    let action = {
+      type: 'ADD_POST',
+      id: 1,
+      name: "test_name",
+      location: "test_location",
+      content: "test_content"
     }
     dispatch(action);
     this.setState({formVisibleOnPage: false});

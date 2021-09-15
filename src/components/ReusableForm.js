@@ -1,5 +1,7 @@
 import React from "react";
+import Post from "./Post";
 import PropTypes from "prop-types";
+import Button from "react-bootstrap";
 
 function ReusableForm(props) {
   return (
@@ -8,15 +10,15 @@ function ReusableForm(props) {
         <input
           type='text'
           name='name'
-          placeholder='Pair Name' />
+          placeholder=' Name' />
         <input
           type='text'
-          name='forum'
-          placeholder='Discussion' />
+          name='location'
+          placeholder='Location' />
         <textarea
-          name='post'
-          placeholder='what"s on your mind...' />
-        <button type='submit'>{props.buttonText}</button>
+          name='content'
+          placeholder='whats on your mind...' />
+        <Button variant="secondary" type='submit'>{props.buttonText}</Button>
       </form>
     </React.Fragment> 
   );

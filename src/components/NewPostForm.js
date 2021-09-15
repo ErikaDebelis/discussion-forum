@@ -3,10 +3,15 @@ import ReusableForm from "./ReusableForm";
 import React from "react";
 import PropTypes from "prop-types";
 
-function NewPostForm(){
+function NewPostForm(props){
   function handleNewPostSubmission(event){
     event.preventDefault();
-    props.onNewPostCreation({names: event.target.names.value, location: event.target.location.value, content: event.target.content.value, id: v4()});
+    props.onNewPostCreation({
+      name: event.target.name.value,
+      location: event.target.location.value,
+      content: event.target.content.value,
+      id: v4()
+    });
   }
   return(
     <React.Fragment>
