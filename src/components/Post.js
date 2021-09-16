@@ -25,17 +25,10 @@ function Post(props){
 Post.propTypes ={
   name: PropTypes.string.isRequired,
   location: PropTypes.string,
+  feeling: PropTypes.string,
   content: PropTypes.string.isRequired,
   id: PropTypes.string,
   whenPostClicked: PropTypes.func
 }
 
 export default Post;
-
-{/* <Card>
-  <Card.Header{props.name}</Card.Header>
-  <Card.Body>
-    <Card.Title>{props.location}</Card.Title>
-    <Card.Text>{props.content}</Card.Text>
-  </Card.Body>
-</Card> */}

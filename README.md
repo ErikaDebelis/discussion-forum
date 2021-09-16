@@ -42,7 +42,7 @@ _View in browser:_
  
 
 ## License
-_[MIT](https://opensource.org/licenses/MIT) (c) 2021 Araceli Valdovinos_
+_[MIT](https://opensource.org/licenses/MIT) :copyright: 2021 Araceli Valdovinos_
 
 ## Contact Information
 Contact the authors: __[Erika Debelis](erika.debelis@gmail.com), [Godfrey Owidi](godfreyowiidi@gmail.com), [Araceli Valdovinos](valdovinosaraceli50@gmail.com)__

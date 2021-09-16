@@ -11,7 +11,6 @@ class PostControl extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log(props);
     this.state = {
       formVisibleOnPage: false,
       selectedPost: null,
@@ -52,7 +51,7 @@ class PostControl extends React.Component {
       name: name,
       location: location,
       feeling: feeling,
-      content: content
+      content: content,
     }
     dispatch(action);
     // const action2 = {
@@ -75,7 +74,7 @@ class PostControl extends React.Component {
       name: name,
       location: location,
       feeling: feeling,
-      content: content,
+      content: content
     }
     dispatch(action);
     this.setState({
@@ -148,12 +147,12 @@ const mapStateToProps = state => {
   }
 }
 
-PostControl = connect(mapStateToProps)(PostControl);
-
 PostControl.propTypes ={
   masterNewsFeed: PropTypes.object,
   // formVisibleOnPage: PropTypes.bool
 }
+
+PostControl = connect(mapStateToProps)(PostControl);
 
 export default PostControl;
 

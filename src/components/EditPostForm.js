@@ -12,7 +12,8 @@ function EditPostForm (props){
       location: event.target.location.value,
       feeling: event.target.feeling.value,
       content: event.target.content.value,
-      id: post.id});
+      id: post.id
+    });
   }
   return (
     <React.Fragment>
