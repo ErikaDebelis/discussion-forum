@@ -45,12 +45,13 @@ class PostControl extends React.Component {
 
   handleAddingNewPostToNewsFeed = (newPost) => {
     const { dispatch } = this.props;
-    const { id, name, location, content } = newPost;
+    const { id, name, location, feeling, content } = newPost;
     const action = {
       type: 'ADD_POST',
       id: id,
       name: name,
       location: location,
+      feeling: feeling,
       content: content
     }
     dispatch(action);
@@ -67,12 +68,13 @@ class PostControl extends React.Component {
 
   handleEditingNewPostInNewsFeed = (postToEdit) => {
     const { dispatch } = this.props;
-    const { id, name, location, content } = postToEdit;
+    const { id, name, location, feeling, content } = postToEdit;
     const action = {
       type: 'ADD_POST',
       id: id,
       name: name,
       location: location,
+      feeling: feeling,
       content: content,
     }
     dispatch(action);

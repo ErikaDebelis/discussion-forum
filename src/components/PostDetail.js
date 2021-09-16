@@ -7,7 +7,7 @@ function PostDetail(props){
   return(
     <React.Fragment>
       <h1>Post Details</h1>
-      <h3>{post.names} - {post.location}</h3>
+      <h3>{post.name} - {post.location}</h3>
       <p>{post.content}</p>
       <Button variant="outline-secondary" size="sm" onClick={ props.onClickingEdit }>Update Post</Button>
       <Button variant="outline-danger" size="sm" onClick={() => onClickingDelete(post.id) }>Delete</Button>

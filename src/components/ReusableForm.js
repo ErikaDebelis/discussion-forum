@@ -21,6 +21,10 @@ function ReusableForm(props) {
                 <Form.Label>Location</Form.Label>
                 <Form.Control name="location"  type='text' placeholder="here" />
               </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Feeling</Form.Label>
+                <Form.Control name="feeling"  type='text' placeholder="happy" />
+              </Form.Group>
               <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                 <Form.Label>Post</Form.Label>
                 <Form.Control as="textarea" name ='content' placeholder="what's on your mind..." rows={3} />

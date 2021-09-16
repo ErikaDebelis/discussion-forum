@@ -11,6 +11,7 @@ function NewPostForm(props){
     props.onNewPostCreation({
       name: event.target.name.value,
       location: event.target.location.value,
+      feeling: event.target.feeling.value,
       content: event.target.content.value,
       id: v4()
     });

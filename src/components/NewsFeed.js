@@ -11,6 +11,7 @@ function NewsFeed(props){
           whenPostClicked = {props.onPostSelection}
           name={post.name}
           location={post.location}
+          feeling={post.feeling}
           content={post.content}
           id={post.id}
           key={post.id} />
