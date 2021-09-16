@@ -1,3 +1,5 @@
+
+
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -6,37 +8,40 @@ import NewsFeed from './NewsFeed';
 import NewPostForm from './NewPostForm';
 import PostDetail from './PostDetail';
 import Button from "react-bootstrap/Button";
-import * as actions from './../actions';
+// import * as actions from './../actions';
 
 class PostControl extends React.Component {
 
-  // constructor(props) {
-  //   super(props);
-  //   this.props = {
-  //     formVisibleOnPage: false,
-  //     selectedPost: null,
-  //     editing: false
-  //   };
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      formVisibleOnPage: false,
+      selectedPost: null,
+      editing: false
+    };
+  }
 
   handleClick = () =>{
-    if (this.props.selectedPost != null && this.props.editing === true) {
+    if (this.state.selectedPost != null && this.props.editing === true) {
       const { dispatch } = this.props;
       const action = actions.nullSelectedPost();
       dispatch(action);
       const action2 = actions.editPost();
       dispatch(action2)
-
-    } else if (this.props.selectedPost != null && this.props.editing === false) {
+      });
+    } else if (this.state.selectedPost != null && this.props.editing === false) {
       const { dispatch } = this.props;
       const action = actions.nullSelectedPost();
       dispatch(action);
-
     } else {
       const { dispatch } = this.props;
-      const action = actions.toggleForm();
-      dispatch(action);
-      };
+      const action = {
+      type: 'TOGGLE_FORM'
+      }
+      dispatch(action)
+      this.setState(prevState => ({
+        formVisibleOnPage: !prevState.formVisibleOnPage,
+      }));
     }
   }
 
@@ -58,7 +63,7 @@ class PostControl extends React.Component {
 
   handleEditingNewPostInNewsFeed = (postToEdit) => {
     const { dispatch } = this.props;
-    const action1 = actions.addPost(postToEdit);
+    const action1 = a.addPost(PostToEdit);
     dispatch(action1);
     const action2 = actions.editPost();
     dispatch(action2);
@@ -76,36 +81,29 @@ class PostControl extends React.Component {
     const selectedPost = this.props.masterNewsFeed[id];
     const { dispatch } = this.props;
     const action = actions.selectPost(selectedPost)
-    dispatch(action);
-  };
-
-  handleUpVotes = (id) =>{
-  const selectedPost = this.props.masterNewsFeed[id];
-    selectedPost++
-  this.props.selectedPost = null;
-
+    dispatch(action)
   }
 
-  render() {
+  render(){
     let currentlyVisibleState = null;
     let buttonText = null;
 
-    if (this.props.editing ) {
+    if (this.state.editing ) {
       currentlyVisibleState =
       <EditPostForm
-        post = {this.props.selectedPost}
+        post = {this.state.selectedPost}
         onEditPost = {this.handleEditingPostInNewsFeed} />
       buttonText = "Return to News Feed";
 
-    } else if (this.props.selectedPost != null) {
+    } else if (this.state.selectedPost != null) {
       currentlyVisibleState =
       <PostDetail
-        post = {this.props.selectedPost}
+        post = {this.state.selectedPost}
         onClickingDelete = {this.handleDeletingPost}
         onClickingEdit = {this.handleEditClick} />
       buttonText = "Return to News Feed";
 
-    } else if (this.props.formVisibleOnPage) {
+    } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState =
       <NewPostForm
         onNewPostCreation = {this.handleAddingNewPostToNewsFeed}/>;
@@ -126,25 +124,29 @@ class PostControl extends React.Component {
       </React.Fragment>
     );
   }
+
 }
 
 PostControl.propTypes = {
-  masterNewsFeed: PropTypes.object,
-  formVisibleOnPage: PropTypes.object,
-  selectedPost: PropTypes.bool,
-  editing: PropTypes.bool
+  masterNewsFeed: PropTypes.object
 };
 
 const mapStateToProps = state => {
   return {
+    masterNewsFeed: state,
+    // formVisibleOnPage: state.formVisibleOnPage
+  }
+}
+
+PostControl.propTypes ={
     masterNewsFeed: state.masterNewsFeed,
     formVisibleOnPage: state.formVisibleOnPage,
     selectedPost: state.selectedPost,
     editing: state.editing
-  }
 }
-
 
 PostControl = connect(mapStateToProps)(PostControl);
 
 export default PostControl;
+
+

@@ -7,12 +7,12 @@ import PropTypes from "prop-types";
 function NewPostForm(props){
   function handleNewPostSubmission(event){
     event.preventDefault();
-    console.log(event.target.name.value,)
     props.onNewPostCreation({
       name: event.target.name.value,
       location: event.target.location.value,
       feeling: event.target.feeling.value,
       content: event.target.content.value,
+      votes: 0,
       id: v4()
     });
   }
@@ -21,15 +21,6 @@ function NewPostForm(props){
       <ReusableForm
       formSubmissionHandler={handleNewPostSubmission}
       buttonText="Add" />
-      {/* {Object.values(props.newsFeed).map((post) =>
-        <Post
-          // whenPostClicked = {props.onPostSelection}
-          name={post.name}
-          location={post.location}
-          content={post.content}
-          id={post.id}
-          key={post.id} />
-        )} */}
     </React.Fragment>
   );
 }

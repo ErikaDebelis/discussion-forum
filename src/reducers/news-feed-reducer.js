@@ -1,23 +1,28 @@
+import * as constant from './../actions/Actions';
+
 export default (state = {
-  // 1: {name: 'Godfrey',
-  //   location: 'Kenya',
-  //   feeling: 'cool as a cucumber',
-  //   content: 'Opioids are poison!',
-  //   id: 1 },
-  //   2: {name: 'Erika',
-  //   location: 'Oregon',
-  //   feeling: 'Sleepy',
-  //   content: 'I am THE bootstrap lady',
-  //   id: 2 },
-  //   3: {name: 'Araceli',
-  //   location: 'Texas',
-  //   feeling: 'Determined',
-  //   content: 'Texas love their guns',
-  //   id: 3 },
+  1: {name: 'Godfrey',
+    location: 'Kenya',
+    feeling: 'cool as a cucumber',
+    content: 'Opioids are poison!',
+    votes: 0,
+    id: 1 },
+    2: {name: 'Erika',
+    location: 'Oregon',
+    feeling: 'Sleepy',
+    content: 'I am THE bootstrap lady',
+    votes: 0,
+    id: 2 },
+    3: {name: 'Araceli',
+    location: 'Texas',
+    feeling: 'Determined',
+    content: 'Texas love their guns',
+    votes: 0,
+    id: 3 }
 }, action) => {
   const { name, location, feeling, content, id } = action;
   switch (action.type) {
-  case 'ADD_POST':
+  case constant.ADD_POST:
     return Object.assign({}, state, {
       [id]: {
         name: name,
@@ -27,7 +32,7 @@ export default (state = {
         id: id
       }
     });
-  case 'DELETE_POST':
+  case constant.DELETE_POST:
     let newState = { ...state };
     delete newState[id];
     return newState;

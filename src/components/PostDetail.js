@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card';
 
 function PostDetail(props){
-  const{ post, onClickingDelete } = props;
+  const{ post, onClickingDelete, onClickingEdit } = props;
   return(
     <React.Fragment>
       <h1>Post Details</h1>
@@ -18,7 +18,7 @@ function PostDetail(props){
           </Card>
         </div>
       <br />
-      <Button variant="outline-secondary" size="sm" onClick={ props.onClickingEdit }>Update Post</Button>
+      <Button variant="outline-secondary" size="sm" onClick={ onClickingEdit }>Update Post</Button>
       <Button variant="outline-danger" size="sm" onClick={() => onClickingDelete(post.id) }>Delete</Button>
       <hr/>
     </React.Fragment>
