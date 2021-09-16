@@ -1,4 +1,4 @@
-import * as constant from './ActionTypes';
+import * as constant from './Actions';
 
 export const addPost = (post) => {
   const { name, location, feeling, content, id } = post;
@@ -21,10 +21,10 @@ export const deletePost = (id) => ({
   id
 });
 
-export const makeSelectedPost = (post) => {
+export const selectPost = (post) => {
   const { name, location, feeling, content, id } = post;
   return {
-    type: constant.SELECTED_POST,
+    type: constant.SELECT_POST,
     name: name,
     location: location,
     feeling: feeling,

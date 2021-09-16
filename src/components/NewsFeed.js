@@ -6,7 +6,7 @@ function NewsFeed(props){
   return(
     <React.Fragment>
       <hr />
-      {Object.values(props.newsFeed).map((post) => {
+      {Object.values(props.newsFeed || {}).map((post) => {
         return <Post
           whenPostClicked = {props.onPostSelection}
           name={post.name}

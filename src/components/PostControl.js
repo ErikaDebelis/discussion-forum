@@ -19,7 +19,7 @@ class PostControl extends React.Component {
   //   };
   // }
 
-  handleClick = () =>{
+  handleClick = () => {
     if (this.props.selectedPost != null && this.props.editing === true) {
       const { dispatch } = this.props;
       const action = actions.nullSelectedPost();
@@ -36,7 +36,6 @@ class PostControl extends React.Component {
       const { dispatch } = this.props;
       const action = actions.toggleForm();
       dispatch(action);
-      };
     }
   }
 
@@ -73,24 +72,24 @@ class PostControl extends React.Component {
   }
 
   handleChangingSelectedPost = (id) => {
-    const selectedPost = this.props.masterNewsFeed[id];
+    const selectPost = this.props.masterNewsFeed[id];
     const { dispatch } = this.props;
-    const action = actions.selectPost(selectedPost)
+    const action = actions.selectPost(selectPost)
     dispatch(action);
   };
 
-  handleUpVotes = (id) =>{
-  const selectedPost = this.props.masterNewsFeed[id];
-    selectedPost++
-  this.props.selectedPost = null;
+  // handleUpVotes = (id) =>{
+  // const selectedPost = this.props.masterNewsFeed[id];
+  //   selectedPost++
+  // this.props.selectedPost = null;
 
-  }
+  // };
 
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
 
-    if (this.props.editing ) {
+    if (this.props.editing) {
       currentlyVisibleState =
       <EditPostForm
         post = {this.props.selectedPost}
@@ -136,6 +135,8 @@ PostControl.propTypes = {
 };
 
 const mapStateToProps = state => {
+  console.log('what gives man', state)
+
   return {
     masterNewsFeed: state.masterNewsFeed,
     formVisibleOnPage: state.formVisibleOnPage,
