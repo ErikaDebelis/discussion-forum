@@ -1,9 +1,6 @@
 import * as constant from './../actions/Actions';
 
 const defaultState = {
-  formVisibleOnPage: false,
-  selectedPost: null,
-  editing: false,
   masterNewsFeed: {
     1: {
       name: 'Godfrey',
@@ -51,7 +48,7 @@ export default (state = defaultState, action) => {
       }
     });
   case constant.DELETE_POST:
-    let newMasterNewsFeed = { ...state.masterNewsFeed };
+    let newMasterNewsFeed = { ...state };
     delete newMasterNewsFeed[id];
     return newMasterNewsFeed;
   default:
